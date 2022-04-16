@@ -61,6 +61,10 @@ public class LabelService {
      */
     public void insert(Label label) {
         label.setId(idWorker.nextId() + "");
+        label.setCount(0L);
+        label.setFans(0L);
+        label.setRecommend("0");
+        label.setState("0");
         labelDao.save(label);
     }
 
