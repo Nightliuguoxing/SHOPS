@@ -11,8 +11,8 @@ POST 	/user/info
 
 ```bash
 标签管理
-GET		/label
-GET		/label/{id}
+GET	/label
+GET	/label/{id}
 POST 	/label
 POST	/label/search
 POST	/label/search/{page}/{size}
@@ -32,9 +32,9 @@ DELETE	/label/{id}
 
 ```bash
 - Login.vue
-	- 用户登录
+    - 用户登录
 - index.vue
-	- 根据{TOKEN}获取用户信息
+    - 根据{TOKEN}获取用户信息
 ```
 
 ##### 2022-04-16
