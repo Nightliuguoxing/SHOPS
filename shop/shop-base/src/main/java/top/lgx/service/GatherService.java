@@ -118,6 +118,12 @@ public class GatherService {
                             root.get("name").as(String.class), "%" +
                                     (String) searchMap.get("name") + "%"));
                 }
+                if (searchMap.get("detail") != null &&
+                        !"".equals(searchMap.get("detail"))) {
+                    predicateList.add(cb.like(
+                            root.get("detail").as(String.class), "%" +
+                                    (String) searchMap.get("detail") + "%"));
+                }
                 if (searchMap.get("sponsor") != null &&
                         !"".equals(searchMap.get("sponsor"))) {
                     predicateList.add(cb.like(
@@ -142,11 +148,11 @@ public class GatherService {
                             root.get("enrollTime").as(String.class), "%" +
                                     (String) searchMap.get("enrollTime") + "%"));
                 }
-                if (searchMap.get("state") != null &&
-                        !"".equals(searchMap.get("state"))) {
+                if (searchMap.get("status") != null &&
+                        !"".equals(searchMap.get("status"))) {
                     predicateList.add(cb.like(
-                            root.get("state").as(String.class), "%" +
-                                    (String) searchMap.get("state") + "%"));
+                            root.get("status").as(String.class), "%" +
+                                    (String) searchMap.get("status") + "%"));
                 }
                 if (searchMap.get("city") != null &&
                         !"".equals(searchMap.get("city"))) {

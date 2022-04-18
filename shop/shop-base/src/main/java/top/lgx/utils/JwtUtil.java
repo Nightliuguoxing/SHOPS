@@ -16,7 +16,7 @@ public class JwtUtil {
 
     private  String key = "LUCIFER-LGX-BF-SHOP";
 
-    private Long ttl = 604800L;
+    private Long ttl = 86400000L;
 
     /**
      * @Author: LGX-LUCIFER

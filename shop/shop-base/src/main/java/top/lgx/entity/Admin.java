@@ -3,6 +3,7 @@ package top.lgx.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @Author: LGX-LUCIFER
@@ -11,7 +12,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tb_admin")
-public class Admin {
+public class Admin implements Serializable {
+
+    private static final long serialVersionUID = -7782553938920991432L;
 
     @Id
     private String id;
@@ -52,5 +55,15 @@ public class Admin {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", state='" + state + '\'' +
+                '}';
     }
 }

@@ -65,11 +65,19 @@ public class UserController {
         return new Result(true, StatusCode.OK, "查询成功", userService.findById(id));
     }
 
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-17 10:08
+     * @Params:
+     * @Return: entity.Result
+     * @Description: 获取用户信息
+     */
     @GetMapping("/info")
     public Result info(){
         String token = request.getHeader("token");
         String id = jwtUtil.getId(token);
         User user = userService.findById(id);
+        user.setPassword(null);
         return new Result(true, StatusCode.OK, "查询成功", user);
     }
 
@@ -148,6 +156,11 @@ public class UserController {
     public Result delete(@PathVariable String id){
         userService.deleteById(id);
         return new Result(true, StatusCode.OK, "删除成功");
+    }
+
+    @PostMapping("/logout")
+    public Result logout() {
+        return new Result(true, StatusCode.OK, "退出成功");
     }
 
 }

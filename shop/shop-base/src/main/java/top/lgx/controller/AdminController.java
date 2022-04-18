@@ -1,9 +1,12 @@
 package top.lgx.controller;
 
+import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,8 +64,24 @@ public class AdminController {
      * @Description: 根据id查询管理员
      */
     @GetMapping("/{id}")
-    public Result findById(String id){
+    public Result findById(@PathVariable String id){
         return new Result(true, StatusCode.OK, "查询成功", adminService.findById(id));
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-17 10:06
+     * @Params:
+     * @Return: entity.Result
+     * @Description: 获取登录管理员信息
+     */
+    @GetMapping("/info")
+    public Result info(){
+        String token = request.getHeader("token");
+        String id = jwtUtil.getId(token);
+        Admin admin = adminService.findById(id);
+        admin.setPassword(null);
+        return new Result(true, StatusCode.OK, "查询成功", admin);
     }
 
     /**
@@ -97,6 +116,19 @@ public class AdminController {
         } else {
             return new Result(false, StatusCode.LOGINERROR, "登录失败");
         }
+    }
+
+    @PostMapping("/serach")
+    @ApiOperation(value = "根据条件查询标签")
+    public Result findSearch(@RequestBody Map searchMap) {
+        return new Result(true, StatusCode.OK, "查询成功", adminService.findSearch(searchMap));
+    }
+
+    @ApiOperation(value = "分页查询标签")
+    @PostMapping("/search/{page}/{size}")
+    public Result findSearch(@RequestBody Map searchMap, @PathVariable int page, @PathVariable int size) {
+        Page<Admin> pageList = adminService.findSearch(searchMap, page, size);
+        return new Result(true, StatusCode.OK, "查询成功", new PageResult<>(pageList.getTotalElements(), pageList.getContent()));
     }
 
     /**

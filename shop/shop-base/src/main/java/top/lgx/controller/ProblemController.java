@@ -57,7 +57,7 @@ public class ProblemController {
      */
     @GetMapping("/{id}")
     @ApiOperation(value = "根据id查询问题", notes = "根据id查询问题")
-    public Result findById(String id) {
+    public Result findById(@PathVariable String id) {
         return new Result(true, StatusCode.OK, "查询成功", problemService.findById(id));
     }
 

@@ -1,6 +1,9 @@
 package top.lgx.entity;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,34 +16,47 @@ import java.util.Date;
  * @Description: 活动实体类
  */
 @Entity
+@ApiModel(value = "活动实体类")
 @Table(name = "tb_gathering")
 public class Gather implements Serializable {
 
     private static final long serialVersionUID = -7357862901130367522L;
 
     @Id
+    @ApiModelProperty(value = "活动ID")
     private String id;
 
+    @ApiModelProperty(value = "活动名称")
     private String name;
 
+    @ApiModelProperty(value = "活动简介")
     private String summary;
 
+    @ApiModelProperty(value = "活动详情")
     private String detail;
 
+    @ApiModelProperty(value = "活动发起者")
     private String sponsor;
 
+    @ApiModelProperty(value = "活动海报")
     private String image;
 
+    @ApiModelProperty(value = "活动开始时间")
     private Date startTime;
 
+    @ApiModelProperty(value = "活动结束时间")
     private Date endTime;
 
+    @ApiModelProperty(value = "活动地址")
     private String address;
 
+    @ApiModelProperty(value = "活动发布时间")
     private Date enrollTime;
 
+    @ApiModelProperty(value = "活动状态")
     private String status;
 
+    @ApiModelProperty(value = "活动城市")
     private String city;
 
     public String getId() {
