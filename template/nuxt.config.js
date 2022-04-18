@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '滨纷商铺',
+    title: '缤纷商铺',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -13,6 +13,13 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  plugins: [
+    { src:'~plugins/vue-infinite-scroll.js' ,ssr: false},
+    { src:'~plugins/element-ui.js' ,ssr: false}
+  ],
+  css: [
+    'element-ui/lib/theme-chalk/index.css'
+  ],
   /*
   ** Customize the progress bar color
   */
@@ -36,4 +43,3 @@ module.exports = {
     }
   }
 }
-
