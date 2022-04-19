@@ -52,6 +52,7 @@ public class AdminController {
      * @Description: 查询所有管理员
      */
     @GetMapping
+    @ApiOperation(value = "查询所有管理员" , notes = "查询所有管理员")
     public Result findAll(){
         return new Result(true, StatusCode.OK, "查询成功", adminService.findAll());
     }
@@ -64,6 +65,7 @@ public class AdminController {
      * @Description: 根据id查询管理员
      */
     @GetMapping("/{id}")
+    @ApiOperation(value = "根据id查询管理员", notes = "根据id查询管理员")
     public Result findById(@PathVariable String id){
         return new Result(true, StatusCode.OK, "查询成功", adminService.findById(id));
     }
@@ -76,6 +78,7 @@ public class AdminController {
      * @Description: 获取登录管理员信息
      */
     @GetMapping("/info")
+    @ApiOperation(value = "获取登录管理员信息", notes = "获取登录管理员信息")
     public Result info(){
         String token = request.getHeader("token");
         String id = jwtUtil.getId(token);
@@ -92,6 +95,7 @@ public class AdminController {
      * @Description: 添加管理员
      */
     @PostMapping
+    @ApiOperation(value = "添加管理员", notes = "添加管理员")
     public Result insert(@RequestBody Admin admin){
         adminService.insert(admin);
         return new Result(true, StatusCode.OK, "添加成功");
@@ -105,6 +109,7 @@ public class AdminController {
      * @Description: 登录
      */
     @PostMapping("/login")
+    @ApiOperation(value = "登录", notes = "登录")
     public Result login(@RequestBody Map<String, String> loginMap){
         Admin admin = adminService.findByNameAndPassword(loginMap.get("username"), loginMap.get("password"));
         if (admin != null){
@@ -119,13 +124,13 @@ public class AdminController {
     }
 
     @PostMapping("/serach")
-    @ApiOperation(value = "根据条件查询标签")
+    @ApiOperation(value = "根据条件查询标签", notes = "根据条件查询标签")
     public Result findSearch(@RequestBody Map searchMap) {
         return new Result(true, StatusCode.OK, "查询成功", adminService.findSearch(searchMap));
     }
 
-    @ApiOperation(value = "分页查询标签")
     @PostMapping("/search/{page}/{size}")
+    @ApiOperation(value = "分页查询标签", notes = "分页查询标签")
     public Result findSearch(@RequestBody Map searchMap, @PathVariable int page, @PathVariable int size) {
         Page<Admin> pageList = adminService.findSearch(searchMap, page, size);
         return new Result(true, StatusCode.OK, "查询成功", new PageResult<>(pageList.getTotalElements(), pageList.getContent()));
@@ -140,6 +145,7 @@ public class AdminController {
      * @Description: 根据id修改管理员
      */
     @PutMapping("/{id}")
+    @ApiOperation(value = "根据id修改管理员", notes = "根据id修改管理员")
     public Result update(@RequestBody Admin admin, @PathVariable String id){
         admin.setId(id);
         adminService.update(admin);
@@ -154,6 +160,7 @@ public class AdminController {
      * @Description: 根据id删除管理员
      */
     @DeleteMapping("/{id}")
+    @ApiOperation(value = "根据id删除管理员", notes = "根据id删除管理员")
     public Result delete(@PathVariable String id){
         adminService.deleteById(id);
         return new Result(true, StatusCode.OK, "删除成功");
@@ -166,6 +173,7 @@ public class AdminController {
      * @Description: 管理员退出
      */
     @PostMapping("/logout")
+    @ApiOperation(value = "管理员退出", notes = "管理员退出")
     public Result logout() {
         return new Result(true, StatusCode.OK, "退出成功");
     }

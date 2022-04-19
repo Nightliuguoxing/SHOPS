@@ -29,7 +29,7 @@ import java.util.Map;
 @CrossOrigin
 @RestController
 @RequestMapping("/brand")
-@Api(value = "品牌管理", tags = "品牌管理")
+@Api(value = "品牌接口", tags = "品牌接口")
 public class BrandController {
 
     @Autowired
