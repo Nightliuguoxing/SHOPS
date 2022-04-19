@@ -1,6 +1,7 @@
 package top.lgx.entity;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -17,12 +18,26 @@ public class Comment implements Serializable {
     private static final long serialVersionUID = 4638802495606630625L;
 
     @Id
+    @ApiModelProperty(value = "评论ID")
     private String _id;
+
+    @ApiModelProperty(value = "文章ID")
     private String articleId;
+
+    @ApiModelProperty(value = "评论内容")
     private String content;
+
+    @ApiModelProperty(value = "评论者ID")
     private String userId;
+
+    @ApiModelProperty(value = "上层ID")
     private String parentId;
+
+    @ApiModelProperty(value = "发布时间")
     private Date publishTime;
+
+    @ApiModelProperty(value = "评论点赞")
+    private Integer thumbup;
 
     public String get_id() {
         return _id;
@@ -70,5 +85,13 @@ public class Comment implements Serializable {
 
     public void setPublishTime(Date publishTime) {
         this.publishTime = publishTime;
+    }
+
+    public Integer getThumbup() {
+        return thumbup;
+    }
+
+    public void setThumbup(Integer thumbup) {
+        this.thumbup = thumbup;
     }
 }

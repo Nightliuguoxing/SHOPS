@@ -1,5 +1,6 @@
 package top.lgx.service;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -37,6 +38,9 @@ public class ArticleService {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
     public List<Article> findAll() {
         return articleDao.findAll();
     }
@@ -52,6 +56,12 @@ public class ArticleService {
 
     public void insert(Article article) {
         article.setId(idWorker.nextId() + "");
+        article.setUserId("1");
+
+        article.setVisits(0);
+        article.setThumbup(0);
+        article.setComment(0);
+
         articleDao.save(article);
     }
 

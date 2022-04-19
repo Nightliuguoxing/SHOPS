@@ -1,5 +1,8 @@
 package top.lgx.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,41 +15,59 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "tb_article")
+@ApiModel(value = "Article", description = "文章实体类")
 public class Article {
 
     @Id
+    @ApiModelProperty(value = "文章ID")
     private String id;
 
+    @ApiModelProperty(value = "专栏ID")
     private String columnId;
 
+    @ApiModelProperty(value = "用户ID")
     private String userId;
 
+    @ApiModelProperty(value = "文章标题")
     private String title;
 
+    @ApiModelProperty(value = "文章内容")
     private String content;
 
+    @ApiModelProperty(value = "文章封面")
     private String image;
 
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
+    @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
+    @ApiModelProperty(value = "是否公开")
     private String isPublic;
 
+    @ApiModelProperty(value = "是否置顶")
     private String isTop;
 
+    @ApiModelProperty(value = "浏览量")
     private Integer visits;
 
+    @ApiModelProperty(value = "点赞量")
     private Integer thumbup;
 
+    @ApiModelProperty(value = "评论量")
     private Integer comment;
 
+    @ApiModelProperty(value = "状态")
     private String state;
 
+    @ApiModelProperty(value = "所属频道")
     private String channelId;
 
+    @ApiModelProperty(value = "URL")
     private String url;
 
+    @ApiModelProperty(value= "文章类型")
     private String type;
 
     public String getId() {

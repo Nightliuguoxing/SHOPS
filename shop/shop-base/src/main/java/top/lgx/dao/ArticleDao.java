@@ -11,7 +11,7 @@ import top.lgx.entity.Article;
  * @Description:
  */
 @Repository
-public interface ArticleDao extends BaseDao<Article, String>{
+public interface ArticleDao extends BaseDao<Article, String> {
 
     @Modifying
     @Query("UPDATE Article set state = '1' WHERE id = :id")

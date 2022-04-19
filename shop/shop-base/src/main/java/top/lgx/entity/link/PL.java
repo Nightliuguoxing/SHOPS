@@ -1,4 +1,4 @@
-package top.lgx.entity;
+package top.lgx.entity.link;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
