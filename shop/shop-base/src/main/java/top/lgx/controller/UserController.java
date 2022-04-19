@@ -158,6 +158,13 @@ public class UserController {
         return new Result(true, StatusCode.OK, "删除成功");
     }
 
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-18 20:04
+     * @Params:
+     * @Return: entity.Result
+     * @Description: 用户退出登录
+     */
     @PostMapping("/logout")
     public Result logout() {
         return new Result(true, StatusCode.OK, "退出成功");

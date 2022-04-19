@@ -1,5 +1,7 @@
 package top.lgx.entity;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,6 +14,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "tb_admin")
+@ApiModel(value = "Admin", description = "管理员实体类")
 public class Admin implements Serializable {
 
     private static final long serialVersionUID = -7782553938920991432L;
@@ -22,6 +25,8 @@ public class Admin implements Serializable {
     private String username;
 
     private String password;
+
+    private String avatar;
 
     private String state;
 
@@ -49,6 +54,14 @@ public class Admin implements Serializable {
         this.password = password;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public String getState() {
         return state;
     }
@@ -57,13 +70,5 @@ public class Admin implements Serializable {
         this.state = state;
     }
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", state='" + state + '\'' +
-                '}';
-    }
+
 }

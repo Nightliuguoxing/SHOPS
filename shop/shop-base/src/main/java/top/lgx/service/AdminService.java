@@ -85,6 +85,7 @@ public class AdminService {
         admin.setId(idWorker.nextId() + "");
         admin.setPassword(encoder.encode(admin.getPassword()));
         admin.setState("0");
+        admin.setAvatar("https://www.liuguoxing.top/img/avatar.jpg");
         adminDao.save(admin);
     }
 

@@ -1,5 +1,7 @@
 package top.lgx.entity;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,8 +14,8 @@ import java.util.Date;
  * @Description:
  */
 @Entity
-
 @Table(name = "tb_user")
+@ApiModel(value = "User", description = "用户实体类")
 public class User implements Serializable {
 
     private static final long serialVersionUID = -100273871332456850L;
@@ -179,25 +181,4 @@ public class User implements Serializable {
         this.followCount = followCount;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", tel='" + tel + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", sex='" + sex + '\'' +
-                ", birthday=" + birthday +
-                ", avatar='" + avatar + '\'' +
-                ", email='" + email + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", lastTime=" + lastTime +
-                ", online=" + online +
-                ", interest='" + interest + '\'' +
-                ", personality='" + personality + '\'' +
-                ", fansCount=" + fansCount +
-                ", followCount=" + followCount +
-                '}';
-    }
 }

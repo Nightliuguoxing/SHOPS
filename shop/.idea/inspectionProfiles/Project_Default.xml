@@ -45,6 +45,11 @@
           <option value="io.springfox:springfox-swagger-ui" />
           <option value="io.springfox:springfox-swagger2" />
           <option value="io.jsonwebtoken:jjwt" />
+          <option value="org.springframework.boot:spring-boot-starter-validation" />
+          <option value="org.mapstruct:mapstruct-processor" />
+          <option value="org.mapstruct:mapstruct-jdk8" />
+          <option value="org.mapstruct:mapstruct" />
+          <option value="com.aliyun.oss:aliyun-sdk-oss" />
         </list>
       </option>
     </inspection_tool>

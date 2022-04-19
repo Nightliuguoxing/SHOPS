@@ -13,7 +13,7 @@ import java.util.Date;
  * @Date: 2022-04-13 16:14
  * @Description: 评论实体类
  */
-@ApiModel(value = "吐槽实体类")
+@ApiModel(value = "Spit", description = "吐槽实体类")
 public class Spit implements Serializable {
 
     private static final long serialVersionUID = 1741901393173859714L;

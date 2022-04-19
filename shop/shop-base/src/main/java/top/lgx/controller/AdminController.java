@@ -159,4 +159,15 @@ public class AdminController {
         return new Result(true, StatusCode.OK, "删除成功");
     }
 
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-18 20:05
+     * @Return: entity.Result
+     * @Description: 管理员退出
+     */
+    @PostMapping("/logout")
+    public Result logout() {
+        return new Result(true, StatusCode.OK, "退出成功");
+    }
+
 }

@@ -16,8 +16,8 @@ import java.util.Date;
  * @Description: 活动实体类
  */
 @Entity
-@ApiModel(value = "活动实体类")
-@Table(name = "tb_gathering")
+@Table(name = "tb_gather")
+@ApiModel(value = "Gather", description = "活动实体类")
 public class Gather implements Serializable {
 
     private static final long serialVersionUID = -7357862901130367522L;

@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 /**
  * @Author: LGX-LUCIFER
  * @Date: 2022-04-14 11:53
- * @Description:
+ * @Description: WebSecurityConfig
  */
 @Configuration
 @EnableWebSecurity
