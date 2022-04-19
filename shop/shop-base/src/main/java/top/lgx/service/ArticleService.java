@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import top.lgx.dao.ArticleDao;
 import top.lgx.entity.Article;
@@ -13,9 +14,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: LGX-LUCIFER
@@ -26,29 +29,49 @@ import java.util.Map;
 public class ArticleService {
 
     @Autowired
+    private IdWorker idWorker;
+
+    @Autowired
     private ArticleDao articleDao;
 
     @Autowired
-    private IdWorker idWorker;
+    private RedisTemplate redisTemplate;
 
-    public List<Article> findAll(){
+    public List<Article> findAll() {
         return articleDao.findAll();
     }
 
-    public Article findById(String id){
-        return articleDao.findById(id).orElse(null);
+    public Article findById(String id) {
+        Article article = (Article) redisTemplate.opsForValue().get("article_" + id);
+        if (article == null) {
+            article = articleDao.findById(id).orElse(null);
+            redisTemplate.opsForValue().set("article_" + id, article, 1, TimeUnit.DAYS);
+        }
+        return article;
     }
 
-    public void insert(Article article){
-        article.setId(idWorker.nextId()+"");
+    public void insert(Article article) {
+        article.setId(idWorker.nextId() + "");
         articleDao.save(article);
     }
 
-    public void update(Article article){
+    public void update(Article article) {
+        redisTemplate.delete("article_" + article.getId());
         articleDao.save(article);
     }
 
-    public void deleteById(String id){
+    @Transactional(rollbackOn = Exception.class)
+    public void examine(String id) {
+        articleDao.examine(id);
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    public int updateThumbup(String id) {
+        return articleDao.updateThumbup(id);
+    }
+
+    public void deleteById(String id) {
+        redisTemplate.delete("article_" + id);
         articleDao.deleteById(id);
     }
 

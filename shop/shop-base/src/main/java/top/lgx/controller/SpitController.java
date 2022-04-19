@@ -119,6 +119,7 @@ public class SpitController {
     @PutMapping("/thumbup/{id}")
     @ApiOperation(value = "点赞成功")
     public Result updateThumbup(@PathVariable String id){
+        // TODO userId 需要修改为当前登陆的用户
         String userId = "1";
         if (redisTemplate.opsForValue().get("thumbup_" + id + "_" + userId) != null){
             return new Result(false, StatusCode.REPERROR,"您已经点过赞了");
@@ -126,6 +127,44 @@ public class SpitController {
         spitService.updateThumbup(id);
         redisTemplate.opsForValue().set("thumbup_" + id + "_" + userId, "1");
         return new Result(true, StatusCode.OK,"点赞成功");
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 15:19
+     * @Params: id
+     * @Return: entity.Result
+     * @Description: 浏览量+1
+     */
+    @PutMapping("/visits/{id}")
+    @ApiOperation(value = "点击量")
+    public Result updateVisits(@PathVariable String id){
+        String userId = "1";
+        if (redisTemplate.opsForValue().get("visits_" + id + "_" + userId) != null){
+            return new Result(false, StatusCode.REPERROR,"您已经浏览过了");
+        }
+        spitService.updateVisits(id);
+        redisTemplate.opsForValue().set("visits_" + id + "_" + userId, "1");
+        return new Result(true, StatusCode.OK,"浏览成功");
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 15:20
+     * @Params: id
+     * @Return: entity.Result
+     * @Description: 分享量+1
+     */
+    @PutMapping("/share/{id}")
+    @ApiOperation(value = "分享量")
+    public Result updateShare(@PathVariable String id){
+        String userId = "1";
+        if (redisTemplate.opsForValue().get("share_" + id + "_" + userId) != null){
+            return new Result(false, StatusCode.REPERROR,"您已经分享过了");
+        }
+        spitService.updateShare(id);
+        redisTemplate.opsForValue().set("share_" + id + "_" + userId, "1");
+        return new Result(true, StatusCode.OK,"分享成功");
     }
 
     /**

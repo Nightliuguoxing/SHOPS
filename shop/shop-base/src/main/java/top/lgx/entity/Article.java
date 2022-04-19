@@ -41,7 +41,7 @@ public class Article {
 
     private Integer comment;
 
-    private String status;
+    private String state;
 
     private String channelId;
 
@@ -153,12 +153,12 @@ public class Article {
         this.comment = comment;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getChannelId() {

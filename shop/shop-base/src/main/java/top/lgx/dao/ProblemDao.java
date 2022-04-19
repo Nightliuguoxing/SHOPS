@@ -22,7 +22,7 @@ public interface ProblemDao extends BaseDao<Problem, String> {
      * @Return: org.springframework.data.domain.Page<top.lgx.entity.Problem>
      * @Description: 根据标签id查询最新问题
      */
-    @Query(value = "select p from Problem p where p.id in( select pl.problemId from PAL pl where pl.labelId=?1 ) order by p.replyTime desc")
+    @Query(value = "SELECT p FROM Problem p WHERE p.id IN( SELECT pl.problemId FROM PL pl WHERE pl.labelId=?1 ) ORDER BY p.replyTime DESC")
     public Page<Problem> findNewListByLabelId(String labelId, Pageable pageable);
 
 
@@ -34,7 +34,7 @@ public interface ProblemDao extends BaseDao<Problem, String> {
      * @Return: org.springframework.data.domain.Page<top.lgx.entity.Problem>
      * @Description: 根据标签id查询热门问题
      */
-    @Query(value = "select p from Problem p where p.id in( select pl.problemId from PAL pl where pl.labelId=?1 ) order by p.reply desc")
+    @Query(value = "SELECT p FROM Problem p WHERE p.id IN( SELECT pl.problemId FROM PL pl WHERE pl.labelId=?1 ) ORDER BY p.reply DESC")
     public Page<Problem> findHotListByLabelId(String labelId, Pageable pageable);
 
 
@@ -46,6 +46,6 @@ public interface ProblemDao extends BaseDao<Problem, String> {
      * @Return: org.springframework.data.domain.Page<top.lgx.entity.Problem>
      * @Description: 根据标签ID查询等待回答列表
      */
-    @Query(value = "select p from Problem p where p.id in( select pl.problemId from PAL pl where pl.labelId=?1 ) and p.reply = 0 order by p.createTime desc")
+    @Query(value = "SELECT p FROM Problem p WHERE p.id IN( SELECT pl.problemId FROM PL pl WHERE pl.labelId=?1 ) AND p.reply = 0 ORDER BY p.createTime DESC")
     public Page<Problem> findWaitListByLabelId(String labelId, Pageable pageable);
 }

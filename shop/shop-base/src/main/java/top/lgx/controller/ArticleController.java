@@ -75,6 +75,18 @@ public class ArticleController {
         return new Result(true, StatusCode.OK, "更新成功");
     }
 
+    @PutMapping("/examine/{id}")
+    public Result examine(@PathVariable String id){
+        articleService.examine(id);
+        return new Result(true, StatusCode.OK, "审核成功");
+    }
+
+    @PutMapping("/thumbup/{id}")
+    public Result updateThumbup(@PathVariable String id){
+        articleService.updateThumbup(id);
+        return new Result(true, StatusCode.OK, "点赞成功");
+    }
+
     @DeleteMapping("/{id}")
     @ApiOperation(value = "删除文章", notes = "删除文章")
     public Result deleteById(@PathVariable String id){

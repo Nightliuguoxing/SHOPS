@@ -1,5 +1,7 @@
 package top.lgx.entity;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,6 +14,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "tb_recruit")
+@ApiModel(value = "Recruit", description = "招聘信息")
 public class Recruit {
 
     @Id

@@ -121,6 +121,36 @@ public class SpitService {
 
     /**
      * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 15:16
+     * @Params: id
+     * @Return: void
+     * @Description: 浏览量
+     */
+    public void updateVisits(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(id));
+        Update update = new Update();
+        update.inc("visits", 1);
+        mongoTemplate.updateFirst(query, update, "spit");
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 15:16
+     * @Params: id
+     * @Return: void
+     * @Description: 分享量
+     */
+    public void updateShare(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(id));
+        Update update = new Update();
+        update.inc("share", 1);
+        mongoTemplate.updateFirst(query, update, "spit");
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
      * @Date: 2022-04-13 17:11
      * @Params: id
      * @Return: void
