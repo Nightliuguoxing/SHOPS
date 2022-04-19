@@ -9,6 +9,7 @@ import top.lgx.dao.UserDao;
 import top.lgx.entity.User;
 import utils.IdWorker;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -113,6 +114,32 @@ public class UserService {
      */
     public void update(User user) {
         userDao.save(user);
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 17:01
+     * @Params: id
+     * @Params: x
+     * @Return: void
+     * @Description: 更新粉丝数
+     */
+    @Transactional(rollbackOn = Exception.class)
+    public void incFansCount(String id, int x) {
+        userDao.incFansCount(id, x);
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 17:05
+     * @Params: id
+     * @Params: x
+     * @Return: void
+     * @Description: 更新关注数
+     */
+    @Transactional(rollbackOn = Exception.class)
+    public void incFollowCount(String id, int x) {
+        userDao.incFollowCount(id, x);
     }
 
     /**

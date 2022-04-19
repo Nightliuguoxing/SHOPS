@@ -114,7 +114,7 @@ public class UserController {
     @PostMapping("/register/{code}")
     public Result register(@RequestBody User user, @PathVariable String code){
         userService.register(user, code);
-        return new Result(true, StatusCode.OK, "添加成功");
+        return new Result(true, StatusCode.OK, "注册成功");
     }
 
     /**
@@ -128,6 +128,32 @@ public class UserController {
     public Result sendSms(@PathVariable String mobile) {
         userService.sendSms(mobile);
         return new Result(true, StatusCode.OK, "发送成功");
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 17:07
+     * @Params: id
+     * @Params: x
+     * @Return: void
+     * @Description: 更新粉丝数
+     */
+    @PostMapping("/incfans/{id}/{x}")
+    public void incFansCount(@PathVariable String id, @PathVariable int x){
+        userService.incFansCount(id, x);
+    }
+
+    /**
+     * @Author: LGX-LUCIFER
+     * @Date: 2022-04-19 17:07
+     * @Params: id
+     * @Params: x
+     * @Return: void
+     * @Description: 更新关注数
+     */
+    @PostMapping("/incfollow/{id}/{x}")
+    public void incFollowCount(@PathVariable String id, @PathVariable int x){
+        userService.incFollowCount(id, x);
     }
 
     /**
