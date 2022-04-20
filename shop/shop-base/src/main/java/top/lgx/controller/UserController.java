@@ -139,8 +139,9 @@ public class UserController {
      * @Description: 更新粉丝数
      */
     @PostMapping("/incfans/{id}/{x}")
-    public void incFansCount(@PathVariable String id, @PathVariable int x){
+    public Result incFansCount(@PathVariable String id, @PathVariable int x){
         userService.incFansCount(id, x);
+        return new Result(true, StatusCode.OK, "粉丝+1");
     }
 
     /**
@@ -152,8 +153,9 @@ public class UserController {
      * @Description: 更新关注数
      */
     @PostMapping("/incfollow/{id}/{x}")
-    public void incFollowCount(@PathVariable String id, @PathVariable int x){
+    public Result incFollowCount(@PathVariable String id, @PathVariable int x){
         userService.incFollowCount(id, x);
+        return new Result(true, StatusCode.OK, "关注+1");
     }
 
     /**

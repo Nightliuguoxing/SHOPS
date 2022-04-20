@@ -24,9 +24,9 @@ public class Recruit {
 
     private String salary;
 
-    private String condition;
+    private String conditions;
 
-    private String education;
+    private String educations;
 
     private String type;
 
@@ -70,20 +70,20 @@ public class Recruit {
         this.salary = salary;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getConditions() {
+        return conditions;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
     }
 
-    public String getEducation() {
-        return education;
+    public String getEducations() {
+        return educations;
     }
 
-    public void setEducation(String education) {
-        this.education = education;
+    public void setEducations(String educations) {
+        this.educations = educations;
     }
 
     public String getType() {

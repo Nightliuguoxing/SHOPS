@@ -75,6 +75,7 @@ public class ArticleService {
         articleDao.examine(id);
     }
 
+    // TODO HAVE SOME PROBLEM
     @Transactional(rollbackOn = Exception.class)
     public int updateThumbup(String id) {
         return articleDao.updateThumbup(id);

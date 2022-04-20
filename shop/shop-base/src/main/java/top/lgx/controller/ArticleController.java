@@ -51,7 +51,7 @@ public class ArticleController {
     @ApiOperation(value = "新增文章", notes = "新增文章")
     public Result insert(@RequestBody Article article){
         articleService.insert(article);
-        return new Result(true, StatusCode.OK, "插入成功");
+        return new Result(true, StatusCode.OK, "添加成功");
     }
 
     @PostMapping("/search")

@@ -24,20 +24,6 @@ public class SmsListener {
     @Autowired
     private SmsUtil smsUtil;
 
-    private String template_code;
-
-    private String sign_name;
-
-    @RabbitHandler
-    public void sendToSms(Map<String, String> map) {
-        System.out.println("手机号 = " + map.get("mobile") + "===============" + "验证码 = " + map.get("code"));
-        try{
-            smsUtil.sendSms(map.get("mobile"), template_code, sign_name, "{\"number\":\""+ map.get("code") +"\"}");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @RabbitHandler
     public void sendSms(Map<String, String> message){
         LOG.info("手机号: " + message.get("mobile") + " | " + "短信内容: " + message.get("code"));

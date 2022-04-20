@@ -19,17 +19,29 @@ public class Problem {
 
     @Id
     private String id;
+
     private String title;
+
     private String content;
+
     private Date createTime;
+
     private Date updateTime;
+
     private String userId;
+
     private String username;
+
     private Long visits;
+
     private Long thumbup;
+
     private Long reply;
+
     private String solve;
+
     private String replyName;
+
     private Date replyTime;
 
     public String getId() {

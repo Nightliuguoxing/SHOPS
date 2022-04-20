@@ -18,10 +18,15 @@ public class Label {
 
     @Id
     private String id;
+
     private String labelName;
+
     private String state;
+
     private Long count;
+
     private Long fans;
+
     private String recommend;
 
     public String getId() {

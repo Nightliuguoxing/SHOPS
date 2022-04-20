@@ -19,12 +19,12 @@ public class Reply {
 
     @Id
     private String id;
-    private String productId;
+    private String problemId;
     private String content;
     private Date createTime;
     private Date updateTime;
     private String userId;
-    private String userName;
+    private String username;
 
     public String getId() {
         return id;
@@ -34,12 +34,12 @@ public class Reply {
         this.id = id;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getProblemId() {
+        return problemId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProblemId(String problemId) {
+        this.problemId = problemId;
     }
 
     public String getContent() {
@@ -74,11 +74,11 @@ public class Reply {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

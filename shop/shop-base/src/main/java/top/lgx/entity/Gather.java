@@ -54,7 +54,7 @@ public class Gather implements Serializable {
     private Date enrollTime;
 
     @ApiModelProperty(value = "活动状态")
-    private String status;
+    private String state;
 
     @ApiModelProperty(value = "活动城市")
     private String city;
@@ -139,12 +139,12 @@ public class Gather implements Serializable {
         this.enrollTime = enrollTime;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getCity() {

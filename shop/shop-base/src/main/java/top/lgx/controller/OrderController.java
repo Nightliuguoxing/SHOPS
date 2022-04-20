@@ -47,7 +47,7 @@ public class OrderController {
     @PostMapping
     public Result insert(@RequestBody Order order){
         orderService.insert(order);
-        return new Result(true, StatusCode.OK, "插入成功");
+        return new Result(true, StatusCode.OK, "添加成功");
     }
 
     @PostMapping("/search")

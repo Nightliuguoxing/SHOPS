@@ -69,7 +69,7 @@ public class BrandService {
      * @Date: 2022-04-18 21:06
      * @Params: brand
      * @Return: void
-     * @Description: 修改品牌
+     * @Description: 修改品牌 TODO Have Some Problem
      */
     public void update(Brand brand){
         brandDao.save(brand);

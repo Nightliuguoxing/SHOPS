@@ -28,6 +28,9 @@ public class Good {
     @ApiModelProperty(value = "商品描述")
     private String descp;
 
+    @ApiModelProperty(value = "商品状态")
+    private String status;
+
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
@@ -74,6 +77,14 @@ public class Good {
 
     public void setDescp(String descp) {
         this.descp = descp;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Date getCreateTime() {

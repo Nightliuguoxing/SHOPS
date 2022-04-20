@@ -80,10 +80,10 @@ public class Order {
     private String receiver;
 
     @ApiModelProperty(value = "发票类型(1：普通发票，2：增值税发票， 3：电子发票， 0：无发票)")
-    private String invoiceType;
+    private Integer invoiceType;
 
     @ApiModelProperty(value = "订单来源：1:app端，2：pc端，3：M端，4：微信端，5：手机qq端")
-    private String sourceType;
+    private Integer sourceType;
 
     public String getOrderId() {
         return orderId;
@@ -245,19 +245,19 @@ public class Order {
         this.receiver = receiver;
     }
 
-    public String getInvoiceType() {
+    public Integer getInvoiceType() {
         return invoiceType;
     }
 
-    public void setInvoiceType(String invoiceType) {
+    public void setInvoiceType(Integer invoiceType) {
         this.invoiceType = invoiceType;
     }
 
-    public String getSourceType() {
+    public Integer getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(String sourceType) {
+    public void setSourceType(Integer sourceType) {
         this.sourceType = sourceType;
     }
 }

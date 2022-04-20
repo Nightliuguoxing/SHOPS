@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,7 +17,9 @@ import java.util.Date;
 @Entity
 @Table(name = "tb_article")
 @ApiModel(value = "Article", description = "文章实体类")
-public class Article {
+public class Article implements Serializable {
+
+    private static final long serialVersionUID = -505687830532394335L;
 
     @Id
     @ApiModelProperty(value = "文章ID")
