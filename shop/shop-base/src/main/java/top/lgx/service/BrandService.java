@@ -132,6 +132,12 @@ public class BrandService {
                             root.get("name").as(String.class), "%" +
                                     (String) searchMap.get("name") + "%"));
                 }
+                if (searchMap.get("letter") != null &&
+                        !"".equals(searchMap.get("letter"))) {
+                    predicateList.add(cb.like(
+                            root.get("letter").as(String.class), "%" +
+                                    (String) searchMap.get("letter") + "%"));
+                }
                 return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
             }
         };

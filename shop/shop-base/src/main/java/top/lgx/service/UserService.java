@@ -2,6 +2,9 @@ package top.lgx.service;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,7 +12,12 @@ import top.lgx.dao.UserDao;
 import top.lgx.entity.User;
 import utils.IdWorker;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -175,5 +183,50 @@ public class UserService {
         rabbitTemplate.convertAndSend("sms", map);
     }
 
+    public List<User> findSearch(Map searchMap) {
+        Specification<User> specification = createSpecification(searchMap);
+        return userDao.findAll(specification);
+    }
+
+    public Page<User> findSearch(Map searchMap, int page, int size) {
+        Specification<User> specification = createSpecification(searchMap);
+        PageRequest pageRequest = PageRequest.of(page - 1, size);
+        return userDao.findAll(specification, pageRequest);
+    }
+
+    private Specification<User> createSpecification(Map searchMap) {
+        return new Specification<User>() {
+            @Override
+            public Predicate toPredicate(Root<User> root, CriteriaQuery<?>
+                    criteriaQuery, CriteriaBuilder cb) {
+                List<Predicate> predicateList = new ArrayList<>();
+                if (searchMap.get("username") != null &&
+                        !"".equals(searchMap.get("username"))) {
+                    predicateList.add(cb.like(
+                            root.get("username").as(String.class), "%" +
+                                    (String) searchMap.get("username") + "%"));
+                }
+                if (searchMap.get("tel") != null &&
+                        !"".equals(searchMap.get("tel"))) {
+                    predicateList.add(cb.like(
+                            root.get("tel").as(String.class), "%" +
+                                    (String) searchMap.get("tel") + "%"));
+                }
+                if (searchMap.get("sex") != null &&
+                        !"".equals(searchMap.get("sex"))) {
+                    predicateList.add(cb.like(
+                            root.get("sex").as(String.class), "%" +
+                                    (String) searchMap.get("sex") + "%"));
+                }
+                if (searchMap.get("email") != null &&
+                        !"".equals(searchMap.get("email"))) {
+                    predicateList.add(cb.like(
+                            root.get("email").as(String.class), "%" +
+                                    (String) searchMap.get("email") + "%"));
+                }
+                return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
+            }
+        };
+    }
 
 }

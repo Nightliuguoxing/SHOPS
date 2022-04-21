@@ -1,28 +1,23 @@
-package top.lgx.utils;
+package top.lgx.service;
 
 import com.aliyun.oss.OSS;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
 /**
  * @Author: LGX-LUCIFER
- * @Date: 2022-04-18 21:40
+ * @Date: 2022-04-20 22:43
  * @Description:
  */
-public class UploadUtil {
+@Service
+public class UploadService {
 
     @Autowired
     private OSS ossClient;
 
-    /**
-     * @Author: LGX-LUCIFER
-     * @Date: 2022-04-18 22:01
-     * @Params: file
-     * @Return: java.lang.String
-     * @Description: 上传图片到阿里云
-     */
     public String uploadToOSS(MultipartFile file) throws IOException {
         //获取文件后缀名
         //String originalFilename = file.getOriginalFilename();
@@ -40,17 +35,6 @@ public class UploadUtil {
         // 关闭OSSClient。
         ossClient.shutdown();
         return url;
-    }
-
-    /**
-     * @Author: LGX-LUCIFER
-     * @Date: 2022-04-18 22:00
-     * @Params: file
-     * @Return: java.lang.String
-     * @Description: 上传图片到本地
-     */
-    public String uploadToLocal(MultipartFile file) {
-        return "不支持上传到本地~";
     }
 
 }

@@ -1,6 +1,7 @@
 package top.lgx.entity;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,14 +18,19 @@ import javax.persistence.Table;
 public class Brand {
 
     @Id
+    @ApiModelProperty(value = "品牌ID")
     private String id;
 
+    @ApiModelProperty(value = "品牌名称")
     private String name;
 
+    @ApiModelProperty(value = "品牌LOGO")
     private String image;
 
+    @ApiModelProperty(value = "品牌首字母")
     private String letter;
 
+    @ApiModelProperty(value = "品牌排序")
     private Integer sort;
 
     public String getId() {

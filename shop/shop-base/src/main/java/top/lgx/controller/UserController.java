@@ -1,9 +1,11 @@
 package top.lgx.controller;
 
+import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -156,6 +158,17 @@ public class UserController {
     public Result incFollowCount(@PathVariable String id, @PathVariable int x){
         userService.incFollowCount(id, x);
         return new Result(true, StatusCode.OK, "关注+1");
+    }
+
+    @PostMapping("/search")
+    public Result findSearch(@RequestBody Map map) {
+        return new Result(true, StatusCode.OK, "查询成功", userService.findSearch(map));
+    }
+
+    @PostMapping("/search/{page}/{size}")
+    public Result findSearch(@PathVariable int page, @PathVariable int size, @RequestBody Map map) {
+        Page<User> pageList = userService.findSearch(map, page, size);
+        return new Result(true, StatusCode.OK, "查询成功", new PageResult<>(pageList.getTotalElements(), pageList.getContent()));
     }
 
     /**

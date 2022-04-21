@@ -1,6 +1,7 @@
 package top.lgx.entity;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,36 +22,52 @@ public class User implements Serializable {
     private static final long serialVersionUID = -100273871332456850L;
 
     @Id
+    @ApiModelProperty(value = "用户ID")
     private String id;
 
+    @ApiModelProperty(value = "手机号")
     private String tel;
 
+    @ApiModelProperty(value = "用户名")
     private String username;
 
+    @ApiModelProperty(value = "密码")
     private String password;
 
+    @ApiModelProperty(value = "性别")
     private String sex;
 
+    @ApiModelProperty(value = "生日")
     private Date birthday;
 
+    @ApiModelProperty(value = "头像")
     private String avatar;
 
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
+    @ApiModelProperty(value = "建号时间")
     private Date createTime;
 
+    @ApiModelProperty(value = "修改账号时间")
     private Date updateTime;
 
+    @ApiModelProperty(value = "最近登录")
     private Date lastTime;
 
+    @ApiModelProperty(value = "在线")
     private Long online;
 
+    @ApiModelProperty(value = "爱好")
     private String interest;
 
+    @ApiModelProperty(value = "个性签名")
     private String personality;
 
+    @ApiModelProperty(value = "粉丝数量")
     private Integer fansCount;
 
+    @ApiModelProperty(value = "关注数量")
     private Integer followCount;
 
     public String getId() {
