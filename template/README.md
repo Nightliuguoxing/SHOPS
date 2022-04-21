@@ -1,6 +1,6 @@
-# {{ name }}
+# SHOPS
 
-> {{ description }}
+> BF - LUCIFER - LGX
 
 ## Build Setup
 

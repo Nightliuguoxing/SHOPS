@@ -6,11 +6,11 @@
      <img :src="item.image" alt="" /> 
     </div> 
     <div class="right-txt"> 
-     <p>开始时间： {{item.starttime}}</p> 
-     <p>结束时间： {{item.endtime}}</p> 
+     <p>开始时间： {{item.startTime}}</p> 
+     <p>结束时间： {{item.endTime}}</p> 
      <p>举办地点： {{item.address}}</p> 
      <p>主办方：{{item.sponsor}}</p> 
-     <p>报名截止：{{item.enrolltime}} 
+     <p>报名截止：{{item.enrollTime}} 
      <div class="join"> 
       <button class="sui-btn btn-danger">立即报名</button> 
       <span class="will">报名即将开始</span> 
@@ -21,7 +21,7 @@
     <div class="left-content"> 
      <div class="content-item"> 
       <div class="tit">
-       <span>大会介绍</span>
+       <span>活动简介</span>
       </div> 
       <div class="text"> 
        <h4></h4> 
@@ -30,7 +30,7 @@
      </div> 
      <div class="content-item"> 
       <div class="tit">
-       <span>议题简介</span>
+       <span>活动详情</span>
       </div> 
       <div class="text"> 
        <h4></h4> 
@@ -59,7 +59,7 @@
       <div class="tit">
        <span>分享扩散</span>
       </div> 
-      <div class="social-share" data-sites="weibo,wechat" :data-title="item.name" data-url="http://www.itheima.com"> 
+      <div class="social-share" data-sites="weibo" :data-title="item.name" data-url="http://www.itheima.com"> 
       
       </div> 
      </div> 

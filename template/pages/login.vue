@@ -100,7 +100,6 @@ export default {
       },
       login(){
         UserApi.login(this.mobile,this.password ).then( res=> {
-          console.log(JSON.stringify(res))
           if(res.data.flag){
             //保存用户信息
             setUser(res.data.data.token, res.data.data.name, res.data.data.avatar)

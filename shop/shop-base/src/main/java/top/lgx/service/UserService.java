@@ -121,6 +121,12 @@ public class UserService {
      * @Description: 修改用户
      */
     public void update(User user) {
+        User u = userDao.findById(user.getId()).orElse(null);
+        if(user.getPassword() != null && !user.getPassword().equals("")){
+            user.setPassword(encoder.encode(user.getPassword()));
+        }else {
+            user.setPassword(u.getPassword());
+        }
         userDao.save(user);
     }
 

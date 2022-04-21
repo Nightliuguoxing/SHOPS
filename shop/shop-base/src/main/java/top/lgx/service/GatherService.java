@@ -148,11 +148,11 @@ public class GatherService {
                             root.get("enrollTime").as(String.class), "%" +
                                     (String) searchMap.get("enrollTime") + "%"));
                 }
-                if (searchMap.get("status") != null &&
-                        !"".equals(searchMap.get("status"))) {
+                if (searchMap.get("state") != null &&
+                        !"".equals(searchMap.get("state"))) {
                     predicateList.add(cb.like(
-                            root.get("status").as(String.class), "%" +
-                                    (String) searchMap.get("status") + "%"));
+                            root.get("state").as(String.class), "%" +
+                                    (String) searchMap.get("state") + "%"));
                 }
                 if (searchMap.get("city") != null &&
                         !"".equals(searchMap.get("city"))) {

@@ -11,7 +11,6 @@ export function setUser(token,name,avatar){
 }
 
 export function getUser(){
-    console.log(Cookies.get(AvatarKey))
     return {
         token: Cookies.get(TokenKey),
         name: Cookies.get(NameKey),

@@ -16,16 +16,15 @@
         <div class="text"> 
          <p class="title">{{item.name}}</p> 
          <div class="fl goin"> 
-          <p>时间：{{item.starttime}}</p> 
-          <p>城市：{{item.city}}</p> 
+          <p>时间：{{item.startTime}}</p> 
+          <p>城市：{{item.address}} {{item.city}}</p> 
          </div> 
          <div class="fr btn"> 
           <span class="sui-btn btn-bao">立即报名</span> 
          </div> 
          <div class="clearfix"></div> 
         </div> 
-       </div> </li> 
-
+       </div> </li>
      </ul> 
     </div> 
    </div> 
@@ -43,13 +42,14 @@ export default {
     },
     asyncData(){
       return  GatherApi.search(1,12,{state:'1'}).then( res => {
-          return {items: res.data.data.rows }
+        return {items: res.data.data.rows }
        })
     },
     methods: {
       loadMore(){
         this.pageNo++
-        GatherApi.search(this.pageNo,12,{state:'1'}).then( res => {
+        GatherApi.search(this.pageNo, 12,{state:'1'}).then( res => {
+          console.log(JSON.stringify(res.data.data))
           this.items = this.items.concat( res.data.data.rows )
         })
       }

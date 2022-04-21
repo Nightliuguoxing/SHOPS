@@ -8,9 +8,9 @@
 	       <h3>个人账号</h3> 
 	       <ul class="account-info"> 
 	        <li> <span class="gray index">名字</span> 
-			 <span class="info" v-show="!name_input">{{user.nickname}}</span> 
+			 <span class="info" v-show="!name_input">{{user.username}}</span> 
 	         <form  v-show="name_input"> 
-	          <input type="text" placeholder="输入姓名" v-model="user.nickname" /> 
+	          <input type="text" placeholder="输入姓名" v-model="user.username" /> 
 	          <button type='button' class="sui-btn btn-danger save-btn" @click="saveinfo_name()">保存</button> 
 			  <button type='button' class="sui-btn btn-danger save-btn" @click="name_input=false" >取消</button> 
 	         </form> <span class="gray edit"><a class="fa fa-pencil" aria-hidden="true" @click="name_input=true">编辑</a> </span> </li> 
@@ -20,7 +20,7 @@
 	          <input type="email" placeholder="输入邮箱" /> 
 	          <button class="sui-btn btn-danger save-btn">保存</button> 
 	         </form> <span class="gray edit"><a class="fa fa-pencil" @click="test" aria-hidden="true">编辑</a> </span> </li> 
-	        <li> <span class="gray index">手机号码 </span> <span class="info">{{user.mobile}}</span> 
+	        <li> <span class="gray index">手机号码 </span> <span class="info">{{user.tel}}</span> 
 	         <form class="sui-form form-inline"> 
 	          <input type="phone" placeholder="输入手机号码" /> 
 	          <button class="sui-btn btn-danger save-btn">保存</button> 
